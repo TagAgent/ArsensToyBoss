@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from toyboss_factory.views import HomePageView, ProductPageView, ProductDetailPageView
+from toyboss_factory.views import (HomePageView, ProductPageView, ProductDetailPageView,
+                                   PublicationPageView, PublicationDetailPageView,
+                                   AboutPageView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home-page-url'),
-    path('product-list/', ProductPageView.as_view(), name='product-list-url'),
-    path('product-detail/<int:pk>/', ProductDetailPageView.as_view(), name='product-detail-url'),
+    path('products/', ProductPageView.as_view(), name='product-list-url'),
+    path('products/<int:pk>/', ProductDetailPageView.as_view(), name='product-detail-url'),
+    path('publications/', PublicationPageView.as_view(), name='publication-list-url'),
+    path('publications/<int:pk>/', PublicationDetailPageView.as_view(), name='publication-detail-url'),
+    path('about/', AboutPageView.as_view(), name='about-page-url'),
 ]
